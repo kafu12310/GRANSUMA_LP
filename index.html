@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FC GRANSUMA | 大学生限定 キャリア形成特化型サッカークラブ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gransuma: {
+                purple: '#4a1d96',
+                'purple-dark': '#3b1578',
+                navy: '#1a1a3e',
+                gold: '#d4a017',
+                line: '#06C755',
+              },
+            },
+            fontFamily: {
+              sans: ['"Noto Sans JP"', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      .hero-bg {
+        background-color: #f7f7f7;
+        background-image: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.025) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.025) 50%,
+            rgba(0, 0, 0, 0.025) 75%,
+            transparent 75%
+          ),
+          linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.025) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.025) 50%,
+            rgba(0, 0, 0, 0.025) 75%,
+            transparent 75%
+          );
+        /* 背景画像：後から差し替え → url('assets/images/hero-bg.jpg') */
+        background-size: 16px 16px, 16px 16px;
+        background-position: center;
+        background-repeat: repeat, repeat;
+      }
+
+      .hero-bg.has-image {
+        background-size: cover, 16px 16px, 16px 16px;
+        background-repeat: no-repeat, repeat, repeat;
+      }
+
+      .hero-bg-overlay {
+        background: linear-gradient(
+          105deg,
+          rgba(255, 255, 255, 0.97) 0%,
+          rgba(255, 255, 255, 0.92) 38%,
+          rgba(255, 255, 255, 0.55) 58%,
+          rgba(255, 255, 255, 0.15) 75%,
+          transparent 100%
+        );
+      }
+
+      .hero-brush-stroke {
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(170, 170, 170, 0.3) 25%,
+          rgba(150, 150, 150, 0.45) 50%,
+          rgba(170, 170, 170, 0.25) 75%,
+          transparent 100%
+        );
+        transform: skewX(-14deg);
+      }
+
+      .hero-splash-purple {
+        background: linear-gradient(
+          125deg,
+          transparent 0%,
+          rgba(74, 29, 150, 0.12) 35%,
+          rgba(91, 33, 182, 0.55) 60%,
+          rgba(59, 21, 120, 0.75) 100%
+        );
+      }
+
+      .hero-splash-accent {
+        background: linear-gradient(
+          160deg,
+          transparent 30%,
+          rgba(124, 58, 237, 0.35) 70%,
+          rgba(74, 29, 150, 0.5) 100%
+        );
+        clip-path: polygon(40% 0, 100% 0, 100% 100%, 10% 100%);
+      }
+
+      .brush-text {
+        font-style: italic;
+        letter-spacing: -0.03em;
+        transform: rotate(-1.5deg);
+        transform-origin: left center;
+      }
+
+      .title-gradient {
+        background: radial-gradient(
+            ellipse at 20% 50%,
+            rgba(196, 181, 253, 0.95) 0%,
+            transparent 42%
+          ),
+          radial-gradient(
+            ellipse at 80% 20%,
+            rgba(124, 58, 237, 0.9) 0%,
+            transparent 38%
+          ),
+          radial-gradient(ellipse at 55% 90%, rgba(30, 27, 75, 0.95) 0%, transparent 48%),
+          linear-gradient(118deg, #8b5cf6 0%, #5b21b6 30%, #3b0764 65%, #1e1b4b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 1px 2px rgba(74, 29, 150, 0.2));
+      }
+
+      .slant-banner {
+        transform: skewX(-9deg);
+      }
+
+      .slant-banner-inner {
+        transform: skewX(9deg);
+      }
+
+      .hero-badge {
+        background: radial-gradient(
+          circle at 28% 28%,
+          #9333ea 0%,
+          #6b21a8 45%,
+          #4a1d96 100%
+        );
+        box-shadow: 0 6px 20px rgba(74, 29, 150, 0.45),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      }
+
+      .text-gold-gradient {
+        background: linear-gradient(180deg, #f5e6a8 0%, #d4a017 45%, #a67c1a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .benefits-slant-left {
+        clip-path: polygon(0 0, 100% 0, calc(100% - 1.75rem) 100%, 0 100%);
+      }
+
+      .benefits-slant-step {
+        clip-path: polygon(1.75rem 0, 100% 0, calc(100% - 1.75rem) 100%, 0 100%);
+        margin-left: -1.25rem;
+      }
+
+      .benefits-slant-right {
+        clip-path: polygon(1.75rem 0, 100% 0, 100% 100%, 0 100%);
+        margin-left: -1.25rem;
+      }
+
+      @media (max-width: 1023px) {
+        .benefits-slant-left,
+        .benefits-slant-step,
+        .benefits-slant-right {
+          clip-path: none;
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans text-gray-800 antialiased">
+    <!-- ========== Hero Section ========== -->
+    <header class="relative overflow-hidden">
+      <div class="hero-bg relative">
+        <!-- 背景画像を入れる場合：.hero-bg に has-image クラスを追加し、CSS内の url() を設定 -->
+        <div class="hero-bg-overlay pointer-events-none absolute inset-0"></div>
+
+        <!-- 右側の紫アクセント（背景画像差し替え後も効く装飾） -->
+        <div
+          class="hero-splash-purple pointer-events-none absolute inset-y-0 right-0 w-[55%]"
+        ></div>
+        <div
+          class="hero-splash-accent pointer-events-none absolute inset-y-0 right-0 w-[45%]"
+        ></div>
+
+        <div class="relative mx-auto max-w-5xl px-4 py-5 sm:px-6 sm:py-6">
+          <!-- Logo：横並びで縦幅を節約 -->
+          <div class="relative z-10 mb-3 flex items-end gap-3 sm:mb-4 sm:gap-4">
+            <img
+              src="assets/images/logo.png"
+              alt="FC GRANSUMA"
+              class="h-16 w-16 object-contain drop-shadow sm:h-20 sm:w-20 md:h-24 md:w-24"
+            />
+            <img
+              src="assets/images/logo_title.png"
+              alt="FC GRANSUMA"
+              class="mb-0.5 h-5 w-auto object-contain sm:h-6 md:h-7"
+            />
+          </div>
+
+          <div class="relative z-10 pb-2 pr-24 sm:pr-28 md:pr-32">
+            <div
+              class="hero-brush-stroke pointer-events-none absolute -left-3 top-1 h-10 w-[105%] sm:h-12"
+            ></div>
+            <div
+              class="hero-brush-stroke pointer-events-none absolute -left-1 top-[4.5rem] h-8 w-[85%] opacity-50 sm:top-[5rem]"
+            ></div>
+
+            <p
+              class="brush-text relative text-xl font-black leading-none tracking-tight text-gray-900 sm:text-2xl md:text-[1.75rem]"
+            >
+              部活じゃない。サークルでもない。
+            </p>
+
+            <div class="relative mt-2 inline-block">
+              <div class="slant-banner bg-gray-900 px-4 py-1 shadow-md sm:px-5 sm:py-1.5">
+                <p class="slant-banner-inner text-[11px] font-bold text-white sm:text-xs md:text-sm">
+                  そんな選択肢があることを知っていますか？
+                </p>
+              </div>
+            </div>
+
+            <div class="relative mt-2 inline-block">
+              <div
+                class="slant-banner bg-gradient-to-r from-[#3b1578] to-[#5b21b6] px-5 py-1 shadow-lg sm:px-6 sm:py-1.5"
+              >
+                <p class="slant-banner-inner text-xs font-black text-white sm:text-sm md:text-base">
+                  大学1・2年生へ。
+                </p>
+              </div>
+            </div>
+
+            <h1
+              class="title-gradient relative mt-2 text-[2.75rem] font-black italic leading-[0.9] sm:text-5xl md:text-6xl lg:text-[4.25rem]"
+            >
+              FC GRANSUMA
+            </h1>
+            <p
+              class="relative mt-1.5 text-xs font-bold tracking-wide text-gray-800 sm:text-sm md:text-base"
+            >
+              大学生限定 キャリア形成特化型サッカークラブ
+            </p>
+          </div>
+
+          <!-- 会費無料バッジ：右下固定 -->
+          <div
+            class="hero-badge absolute bottom-4 right-4 z-20 flex h-[5.5rem] w-[5.5rem] flex-col items-center justify-center rounded-full border-[4px] border-white sm:bottom-5 sm:right-6 sm:h-24 sm:w-24"
+          >
+            <p class="text-[11px] font-bold text-white/90 sm:text-xs">会費</p>
+            <p class="text-xl font-black leading-none text-white sm:text-2xl">無料</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第3の選択肢 -->
+      <div class="bg-white px-4 py-6 text-center sm:px-6 sm:py-8">
+        <p class="text-sm text-gray-500 sm:text-base">サークルでもない、部活でもない。</p>
+        <p
+          class="title-gradient mt-2 text-4xl font-black italic sm:text-5xl md:text-6xl"
+        >
+          第3の選択肢。
+        </p>
+        <p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-gray-600 sm:text-base">
+          サッカーを本気で楽しみながら、将来に活きる経験を。
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <div class="px-4 py-8 sm:px-6 sm:py-10">
+        <div class="mx-auto max-w-5xl space-y-6">
+          <!-- ========== Features Section (6 Benefits) ========== -->
+          <section
+            class="relative overflow-hidden rounded-sm bg-white"
+            style="
+              background-image: linear-gradient(
+                  135deg,
+                  rgba(0, 0, 0, 0.02) 25%,
+                  transparent 25%,
+                  transparent 50%,
+                  rgba(0, 0, 0, 0.02) 50%,
+                  rgba(0, 0, 0, 0.02) 75%,
+                  transparent 75%
+                ),
+                linear-gradient(
+                  45deg,
+                  rgba(0, 0, 0, 0.02) 25%,
+                  transparent 25%,
+                  transparent 50%,
+                  rgba(0, 0, 0, 0.02) 50%,
+                  rgba(0, 0, 0, 0.02) 75%,
+                  transparent 75%
+                );
+              background-size: 16px 16px;
+            "
+          >
+            <div
+              class="flex flex-col divide-y divide-gray-200 xl:flex-row xl:divide-x xl:divide-y-0"
+            >
+            <!-- Feature 1 -->
+            <div class="flex flex-1 flex-col items-center px-3 py-6 text-center sm:py-8 xl:px-4">
+              <div class="mb-4 text-gransuma-purple">
+                <!-- サッカーボール（LucideにないためSVG） -->
+                <svg
+                  class="h-10 w-10 sm:h-12 sm:w-12"
+                  viewBox="0 0 64 64"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="3" />
+                  <path
+                    d="M32 6l8 6.5 3 9.5-3 9.5-8 6.5-8-6.5-3-9.5 3-9.5 8-6.5z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <path d="M32 6v19.5M24 12.5l16 19M40 12.5L24 31.5M18 22h28M18 32h28" stroke="currentColor" stroke-width="1.5" fill="none" />
+                </svg>
+              </div>
+              <h3 class="text-sm font-bold leading-snug text-gransuma-purple sm:text-base">
+                大学生だけで<br class="sm:hidden" />戦える環境
+              </h3>
+              <p class="mt-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
+                大学生だけで戦える<br />環境を提供します。
+              </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="flex flex-1 flex-col items-center px-3 py-6 text-center sm:py-8 xl:px-4">
+              <div class="mb-4 text-gransuma-purple">
+                <!-- サッカースパイク（LucideにないためSVG） -->
+                <svg
+                  class="h-10 w-10 sm:h-12 sm:w-12"
+                  viewBox="0 0 64 64"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 38c0-12 8-20 18-22 3-8 12-14 22-14 3 0 6 1 8 2-3 3-6 6-8 9l-3 27H12l-2-2z"
+                  />
+                  <path
+                    d="M18 42h32"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    fill="none"
+                  />
+                  <circle cx="20" cy="46" r="2.5" fill="white" />
+                  <circle cx="28" cy="46" r="2.5" fill="white" />
+                  <circle cx="36" cy="46" r="2.5" fill="white" />
+                  <circle cx="44" cy="46" r="2.5" fill="white" />
+                </svg>
+              </div>
+              <h3 class="text-sm font-bold leading-snug text-gransuma-purple sm:text-base">
+                社会人リーグで<br class="sm:hidden" />本気でプレー
+              </h3>
+              <p class="mt-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
+                神奈川県社会人<br />サッカーリーグで本気でプレー。
+              </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="flex flex-1 flex-col items-center px-3 py-6 text-center sm:py-8 xl:px-4">
+              <div class="mb-4 text-gransuma-purple">
+                <i data-lucide="building-2" class="h-10 w-10 sm:h-12 sm:w-12"></i>
+              </div>
+              <h3 class="text-sm font-bold leading-snug text-gransuma-purple sm:text-base">
+                スポンサー企業<br class="sm:hidden" />26社
+              </h3>
+              <p class="mt-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
+                多くの企業が<br />私たちの活動を応援。
+              </p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="flex flex-1 flex-col items-center px-3 py-6 text-center sm:py-8 xl:px-4">
+              <div class="mb-4 text-gransuma-purple">
+                <i data-lucide="briefcase-business" class="h-10 w-10 sm:h-12 sm:w-12"></i>
+              </div>
+              <h3 class="text-sm font-bold leading-snug text-gransuma-purple sm:text-base">
+                就活に強い<br class="sm:hidden" />ビジネス経験
+              </h3>
+              <p class="mt-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
+                キャリア教育や就活支援で<br />将来に差がつく。
+              </p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="flex flex-1 flex-col items-center px-3 py-6 text-center sm:py-8 xl:px-4">
+              <div class="mb-4 text-gransuma-purple">
+                <i data-lucide="handshake" class="h-10 w-10 sm:h-12 sm:w-12"></i>
+              </div>
+              <h3 class="text-sm font-bold leading-snug text-gransuma-purple sm:text-base">
+                ビジネス経験で<br class="sm:hidden" />実践的に学ぶ
+              </h3>
+              <p class="mt-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
+                企業との活動やプロジェクトで<br />実践的に学べる。
+              </p>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="flex flex-1 flex-col items-center px-3 py-6 text-center sm:py-8 xl:px-4">
+              <div class="mb-4 text-gransuma-purple">
+                <i data-lucide="users" class="h-10 w-10 sm:h-12 sm:w-12"></i>
+              </div>
+              <h3 class="text-sm font-bold leading-snug text-gransuma-purple sm:text-base">
+                本気の仲間と<br class="sm:hidden" />切磋琢磨
+              </h3>
+              <p class="mt-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
+                同じ志を持つ仲間と<br />切磋琢磨できる最高の環境。
+              </p>
+            </div>
+            </div>
+          </section>
+
+          <!-- ========== Benefits / Income Section ========== -->
+          <section class="overflow-hidden">
+            <!-- PC: 斜めカットの横並びバナー -->
+            <div class="hidden bg-[#1a0b45] lg:flex lg:items-stretch">
+          <!-- 左：会費無料 -->
+          <div
+            class="benefits-slant-left flex w-[22%] shrink-0 flex-col justify-center bg-[#1a0b45] px-8 py-10"
+          >
+            <p class="text-gold-gradient text-3xl font-black leading-tight xl:text-4xl">
+              会費無料
+            </p>
+            <p class="mt-2 text-base font-bold text-white xl:text-lg">
+              で活動に取り組める！
+            </p>
+          </div>
+
+          <!-- 中央：3ステップ（白背景） -->
+          <div class="flex flex-1 items-stretch">
+            <div
+              class="benefits-slant-step flex flex-1 flex-col items-center justify-between bg-white px-6 py-8 text-center"
+            >
+              <p class="text-sm font-bold leading-relaxed text-gray-800">
+                営業活動を通じて<br />スポンサー企業を開拓・提案
+              </p>
+              <i
+                data-lucide="user"
+                class="mt-6 h-10 w-10 text-gransuma-navy"
+              ></i>
+            </div>
+
+            <div
+              class="benefits-slant-step flex flex-1 flex-col items-center justify-between bg-white px-6 py-8 text-center"
+            >
+              <p class="text-sm font-bold leading-relaxed text-gray-800">
+                成果に応じた<br />インセンティブ支給
+              </p>
+              <i
+                data-lucide="coins"
+                class="mt-6 h-10 w-10 text-gransuma-navy"
+              ></i>
+            </div>
+
+            <div
+              class="benefits-slant-step flex flex-1 flex-col items-center justify-between bg-white px-6 py-8 text-center"
+            >
+              <p class="text-sm font-bold leading-relaxed text-gray-800">
+                頑張り次第で<br />月収30万円も可能
+              </p>
+              <i
+                data-lucide="wallet"
+                class="mt-6 h-10 w-10 text-gransuma-navy"
+              ></i>
+            </div>
+          </div>
+
+          <!-- 右：月収30万円 -->
+          <div
+            class="benefits-slant-right flex w-[18%] shrink-0 flex-col items-center justify-center border border-white bg-[#1a0b45] px-6 py-10 text-center"
+          >
+            <p class="text-sm font-bold text-white">月収</p>
+            <p class="text-gold-gradient mt-1 text-4xl font-black leading-none xl:text-5xl">
+              30万円
+            </p>
+            <p class="mt-2 text-base font-bold text-white">を目指せる！</p>
+          </div>
+        </div>
+
+          <!-- スマホ・タブレット：縦積み -->
+          <div class="bg-[#1a0b45] py-10 lg:hidden">
+          <div class="text-center">
+            <p class="text-gold-gradient text-3xl font-black sm:text-4xl">会費無料</p>
+            <p class="mt-2 text-lg font-bold text-white">で活動に取り組める！</p>
+          </div>
+
+          <div class="mt-8 space-y-4">
+            <div class="rounded-lg bg-white px-5 py-6 text-center">
+              <p class="text-sm font-bold leading-relaxed text-gray-800">
+                営業活動を通じてスポンサー企業を開拓・提案
+              </p>
+              <i data-lucide="user" class="mx-auto mt-4 h-10 w-10 text-gransuma-navy"></i>
+            </div>
+
+            <div class="flex justify-center text-white/50">
+              <i data-lucide="chevron-down" class="h-5 w-5"></i>
+            </div>
+
+            <div class="rounded-lg bg-white px-5 py-6 text-center">
+              <p class="text-sm font-bold leading-relaxed text-gray-800">
+                成果に応じたインセンティブ支給
+              </p>
+              <i data-lucide="coins" class="mx-auto mt-4 h-10 w-10 text-gransuma-navy"></i>
+            </div>
+
+            <div class="flex justify-center text-white/50">
+              <i data-lucide="chevron-down" class="h-5 w-5"></i>
+            </div>
+
+            <div class="rounded-lg bg-white px-5 py-6 text-center">
+              <p class="text-sm font-bold leading-relaxed text-gray-800">
+                頑張り次第で月収30万円も可能
+              </p>
+              <i data-lucide="wallet" class="mx-auto mt-4 h-10 w-10 text-gransuma-navy"></i>
+            </div>
+          </div>
+
+          <div
+            class="mt-8 flex flex-col items-center justify-center rounded-lg border border-white px-6 py-8 text-center"
+          >
+            <p class="text-sm font-bold text-white">月収</p>
+            <p class="text-gold-gradient mt-1 text-4xl font-black">30万円</p>
+            <p class="mt-2 text-base font-bold text-white">を目指せる！</p>
+          </div>
+          </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- ========== What You Gain Section ========== -->
+      <section class="px-4 py-12 sm:px-6 sm:py-16">
+        <div class="mx-auto max-w-5xl">
+          <h2
+            class="border-b-2 border-gransuma-purple pb-3 text-center text-xl font-black text-gransuma-navy sm:text-2xl md:text-3xl"
+          >
+            FC GRANSUMAで得られるもの
+          </h2>
+
+          <div
+            class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+          >
+            <!-- Card 1 -->
+            <div class="overflow-hidden rounded-lg shadow-md">
+              <!-- 得られるもの画像1：後から差し替え -->
+              <div
+                class="h-36 bg-cover bg-center bg-gray-300 sm:h-40"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&q=80');
+                "
+              ></div>
+              <div class="bg-white p-4">
+                <h3 class="text-sm font-bold text-gransuma-purple sm:text-base">
+                  本気のサッカー環境
+                </h3>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  社会人リーグで本気の試合に挑み、技術とメンタルを磨く。
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="overflow-hidden rounded-lg shadow-md">
+              <!-- 得られるもの画像2：後から差し替え -->
+              <div
+                class="h-36 bg-cover bg-center bg-gray-300 sm:h-40"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80');
+                "
+              ></div>
+              <div class="bg-white p-4">
+                <h3 class="text-sm font-bold text-gransuma-purple sm:text-base">
+                  社会で通用するスキルと経験
+                </h3>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  営業・企画・SNS運用など、実践的なビジネススキルを習得。
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="overflow-hidden rounded-lg shadow-md">
+              <!-- 得られるもの画像3：後から差し替え -->
+              <div
+                class="h-36 bg-cover bg-center bg-gray-300 sm:h-40"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80');
+                "
+              ></div>
+              <div class="bg-white p-4">
+                <h3 class="text-sm font-bold text-gransuma-purple sm:text-base">
+                  就活で語れる実績
+                </h3>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  スポンサー開拓や試合結果など、面接で語れる具体的事例。
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="overflow-hidden rounded-lg shadow-md">
+              <!-- 得られるもの画像4：後から差し替え -->
+              <div
+                class="h-36 bg-cover bg-center bg-gray-300 sm:h-40"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=400&q=80');
+                "
+              ></div>
+              <div class="bg-white p-4">
+                <h3 class="text-sm font-bold text-gransuma-purple sm:text-base">
+                  一生モノの仲間
+                </h3>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  勝利も挫折も共に乗り越える、かけがえのない仲間との絆。
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="overflow-hidden rounded-lg shadow-md sm:col-span-2 lg:col-span-1">
+              <!-- 得られるもの画像5：後から差し替え -->
+              <div
+                class="h-36 bg-cover bg-center bg-gray-300 sm:h-40"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80');
+                "
+              ></div>
+              <div class="bg-white p-4">
+                <h3 class="text-sm font-bold text-gransuma-purple sm:text-base">
+                  多様な活動体験
+                </h3>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  イベント企画やメディア出演など、幅広い活動に挑戦できる。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Why Born / Team Info / Achievements ========== -->
+      <section class="bg-gray-50 px-4 py-12 sm:px-6 sm:py-16">
+        <div class="mx-auto max-w-5xl">
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <!-- Why Born -->
+            <div class="lg:col-span-1">
+              <h2 class="text-lg font-black text-gransuma-navy sm:text-xl">
+                なぜFC GRANSUMAは<br />生まれたのか。
+              </h2>
+              <ul class="mt-6 space-y-3">
+                <li class="flex items-start gap-2 text-sm leading-relaxed">
+                  <i
+                    data-lucide="check-circle"
+                    class="mt-0.5 h-5 w-5 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>卒業後に苦戦する学生を救いたかった</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm leading-relaxed">
+                  <i
+                    data-lucide="check-circle"
+                    class="mt-0.5 h-5 w-5 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>サッカーだけでなく、将来のキャリアも大切にしたい</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm leading-relaxed">
+                  <i
+                    data-lucide="check-circle"
+                    class="mt-0.5 h-5 w-5 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>部活・サークル以外の「第3の選択肢」を作りたかった</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm leading-relaxed">
+                  <i
+                    data-lucide="check-circle"
+                    class="mt-0.5 h-5 w-5 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>本気でサッカーと向き合える環境が必要だった</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm leading-relaxed">
+                  <i
+                    data-lucide="check-circle"
+                    class="mt-0.5 h-5 w-5 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>ビジネス経験を通じて社会人としての力を育てたい</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm leading-relaxed">
+                  <i
+                    data-lucide="check-circle"
+                    class="mt-0.5 h-5 w-5 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>会費で活動を諦める学生をなくしたい</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm leading-relaxed">
+                  <i
+                    data-lucide="check-circle"
+                    class="mt-0.5 h-5 w-5 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>スポンサー企業と共に成長する仕組みを作りたかった</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm leading-relaxed">
+                  <i
+                    data-lucide="check-circle"
+                    class="mt-0.5 h-5 w-5 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>大学生の可能性を最大限に引き出す場所を作りたかった</span>
+                </li>
+              </ul>
+              <p class="mt-8 text-2xl font-black text-gransuma-purple sm:text-3xl">
+                そんな大学1・2年生へ。
+              </p>
+            </div>
+
+            <!-- Player Photo -->
+            <div class="flex items-center justify-center lg:col-span-1">
+              <!-- チーム情報の人物写真：後から差し替え -->
+              <div
+                class="h-64 w-full max-w-xs rounded-lg bg-cover bg-center bg-gray-300 shadow-lg sm:h-80"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=500&q=80');
+                "
+              ></div>
+            </div>
+
+            <!-- Team Info -->
+            <div class="lg:col-span-1">
+              <div class="rounded-lg bg-gransuma-purple p-6 text-white shadow-lg">
+                <h3 class="mb-4 border-b border-white/30 pb-2 text-lg font-bold">
+                  チーム情報
+                </h3>
+                <dl class="space-y-3 text-sm">
+                  <div class="flex gap-2">
+                    <dt class="w-20 shrink-0 font-bold opacity-80">活動地域</dt>
+                    <dd>神奈川（横浜・川崎）</dd>
+                  </div>
+                  <div class="flex gap-2">
+                    <dt class="w-20 shrink-0 font-bold opacity-80">活動日</dt>
+                    <dd>週2〜3回（水・土・日）</dd>
+                  </div>
+                  <div class="flex gap-2">
+                    <dt class="w-20 shrink-0 font-bold opacity-80">所属リーグ</dt>
+                    <dd>神奈川県社会人サッカーリーグ2部</dd>
+                  </div>
+                  <div class="flex gap-2">
+                    <dt class="w-20 shrink-0 font-bold opacity-80">対象</dt>
+                    <dd>大学1〜3年生</dd>
+                  </div>
+                  <div class="flex gap-2">
+                    <dt class="w-20 shrink-0 font-bold opacity-80">スポンサー</dt>
+                    <dd>26社</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <!-- Achievements -->
+              <div class="mt-6">
+                <h3 class="mb-4 text-base font-bold text-gransuma-navy sm:text-lg">
+                  実績
+                </h3>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  <div class="flex flex-col items-center rounded-lg bg-white p-4 text-center shadow-sm">
+                    <i data-lucide="smartphone" class="mb-2 h-8 w-8 text-gransuma-purple"></i>
+                    <p class="text-xs font-bold text-gransuma-navy">SNSリーチ</p>
+                    <p class="mt-1 text-lg font-black text-gransuma-purple">100万回超</p>
+                  </div>
+                  <div class="flex flex-col items-center rounded-lg bg-white p-4 text-center shadow-sm">
+                    <i data-lucide="youtube" class="mb-2 h-8 w-8 text-red-600"></i>
+                    <p class="text-xs font-bold text-gransuma-navy">YouTube</p>
+                    <p class="mt-1 text-sm font-black text-gransuma-purple">「Winners」出演</p>
+                  </div>
+                  <div class="flex flex-col items-center rounded-lg bg-white p-4 text-center shadow-sm">
+                    <i data-lucide="newspaper" class="mb-2 h-8 w-8 text-gransuma-purple"></i>
+                    <p class="text-xs font-bold text-gransuma-navy">メディア</p>
+                    <p class="mt-1 text-sm font-black text-gransuma-purple">タウンニュース等多数</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Action Photo Gallery ========== -->
+      <section class="px-4 py-12 sm:px-6 sm:py-16">
+        <div class="mx-auto max-w-5xl">
+          <h2
+            class="text-center text-xl font-black text-gransuma-navy sm:text-2xl md:text-3xl"
+          >
+            本気でサッカーに向き合う環境。
+          </h2>
+
+          <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <!-- アクション写真1：後から差し替え -->
+            <div
+              class="h-48 rounded-lg bg-cover bg-center bg-gray-300 sm:h-52"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&q=80');
+              "
+            ></div>
+            <!-- アクション写真2：後から差し替え -->
+            <div
+              class="h-48 rounded-lg bg-cover bg-center bg-gray-300 sm:h-52"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&q=80');
+              "
+            ></div>
+            <!-- アクション写真3：後から差し替え -->
+            <div
+              class="h-48 rounded-lg bg-cover bg-center bg-gray-300 sm:h-52"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400&q=80');
+              "
+            ></div>
+            <!-- アクション写真4：後から差し替え -->
+            <div
+              class="h-48 rounded-lg bg-cover bg-center bg-gray-300 sm:h-52"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1459865274727-457593088963?w=400&q=80');
+              "
+            ></div>
+          </div>
+
+          <p class="mt-6 text-center text-sm leading-relaxed text-gray-600 sm:text-base">
+            勝利を目指し、仲間と共に成長できる環境がここにある。
+          </p>
+        </div>
+      </section>
+
+      <!-- ========== Schedule Section ========== -->
+      <section class="bg-purple-50 px-4 py-12 sm:px-6 sm:py-16">
+        <div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
+          <!-- Daily Schedule -->
+          <div class="rounded-lg bg-white p-6 shadow-md">
+            <h2 class="mb-6 text-lg font-black text-gransuma-navy sm:text-xl">
+              1日の活動スケジュール（例）
+            </h2>
+
+            <div class="relative space-y-0">
+              <!-- Timeline item 1 -->
+              <div class="relative flex gap-4 pb-8">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-gransuma-purple text-white"
+                  >
+                    <i data-lucide="book-open" class="h-5 w-5"></i>
+                  </div>
+                  <div class="mt-1 h-full w-0.5 bg-gransuma-purple/30"></div>
+                </div>
+                <div class="flex-1 pt-1">
+                  <p class="text-sm font-bold text-gransuma-purple">08:00</p>
+                  <p class="text-sm text-gray-700">授業・アルバイト</p>
+                </div>
+              </div>
+
+              <!-- Timeline item 2 -->
+              <div class="relative flex gap-4 pb-8">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-gransuma-purple text-white"
+                  >
+                    <i data-lucide="users" class="h-5 w-5"></i>
+                  </div>
+                  <div class="mt-1 h-full w-0.5 bg-gransuma-purple/30"></div>
+                </div>
+                <div class="flex-1 pt-1">
+                  <p class="text-sm font-bold text-gransuma-purple">13:00</p>
+                  <p class="text-sm text-gray-700">ミーティング・戦略会議</p>
+                </div>
+              </div>
+
+              <!-- Timeline item 3 -->
+              <div class="relative flex gap-4 pb-8">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-gransuma-purple text-white"
+                  >
+                    <i data-lucide="dumbbell" class="h-5 w-5"></i>
+                  </div>
+                  <div class="mt-1 h-full w-0.5 bg-gransuma-purple/30"></div>
+                </div>
+                <div class="flex-1 pt-1">
+                  <p class="text-sm font-bold text-gransuma-purple">16:00</p>
+                  <p class="text-sm text-gray-700">自主トレ・個人練習</p>
+                </div>
+              </div>
+
+              <!-- Timeline item 4 -->
+              <div class="relative flex gap-4 pb-8">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-gransuma-purple text-white"
+                  >
+                    <i data-lucide="circle-dot" class="h-5 w-5"></i>
+                  </div>
+                  <div class="mt-1 h-full w-0.5 bg-gransuma-purple/30"></div>
+                </div>
+                <div class="flex-1 pt-1">
+                  <p class="text-sm font-bold text-gransuma-purple">19:00</p>
+                  <p class="text-sm text-gray-700">チーム練習・試合</p>
+                </div>
+              </div>
+
+              <!-- Timeline item 5 -->
+              <div class="relative flex gap-4">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-gransuma-purple text-white"
+                  >
+                    <i data-lucide="clipboard-list" class="h-5 w-5"></i>
+                  </div>
+                </div>
+                <div class="flex-1 pt-1">
+                  <p class="text-sm font-bold text-gransuma-purple">21:30</p>
+                  <p class="text-sm text-gray-700">振り返り・次回に向けた準備</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- OFF Days -->
+          <div class="rounded-lg bg-white p-6 shadow-md">
+            <h2 class="mb-6 text-lg font-black text-gransuma-navy sm:text-xl">
+              OFFの日も成長できる
+            </h2>
+
+            <div class="flex flex-col gap-6 sm:flex-row">
+              <ul class="flex-1 space-y-3">
+                <li class="flex items-start gap-2 text-sm">
+                  <i
+                    data-lucide="check"
+                    class="mt-0.5 h-4 w-4 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>スポンサー営業・企業訪問</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm">
+                  <i
+                    data-lucide="check"
+                    class="mt-0.5 h-4 w-4 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>SNS運用・コンテンツ制作</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm">
+                  <i
+                    data-lucide="check"
+                    class="mt-0.5 h-4 w-4 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>イベント企画・運営</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm">
+                  <i
+                    data-lucide="check"
+                    class="mt-0.5 h-4 w-4 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>メディア対応・広報活動</span>
+                </li>
+                <li class="flex items-start gap-2 text-sm">
+                  <i
+                    data-lucide="check"
+                    class="mt-0.5 h-4 w-4 shrink-0 text-gransuma-purple"
+                  ></i>
+                  <span>チーム運営・マネジメント</span>
+                </li>
+              </ul>
+
+              <!-- スケジュールセクション写真：後から差し替え -->
+              <div
+                class="h-48 w-full shrink-0 rounded-lg bg-cover bg-center bg-gray-300 sm:h-auto sm:w-40"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80');
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== CTA Section ========== -->
+    <section class="bg-gransuma-navy px-4 py-10 sm:px-6 sm:py-14">
+      <div class="mx-auto max-w-5xl">
+        <p
+          class="text-center text-2xl font-black text-white sm:text-3xl md:text-4xl"
+        >
+          お申込みはこちらから！
+          <span class="inline-block">→</span>
+        </p>
+
+        <div
+          class="mt-8 flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-10"
+        >
+          <!-- QR Code Placeholder -->
+          <div
+            class="flex h-32 w-32 items-center justify-center rounded-lg bg-white p-2 sm:h-36 sm:w-36"
+          >
+            <!-- QRコード画像：後から差し替え -->
+            <div class="flex h-full w-full flex-col items-center justify-center bg-gray-100">
+              <i data-lucide="qr-code" class="h-16 w-16 text-gray-400"></i>
+              <p class="mt-1 text-[10px] text-gray-400">QRコード</p>
+            </div>
+          </div>
+
+          <!-- LINE Button -->
+          <a
+            href="https://line.me/R/ti/p/@YOUR_LINE_ID"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex w-full max-w-md items-center gap-3 rounded-full bg-gransuma-line px-6 py-4 text-white shadow-lg transition hover:bg-[#05b34c] sm:w-auto sm:px-8 sm:py-5"
+          >
+            <!-- LINE Icon (SVG) -->
+            <svg
+              class="h-8 w-8 shrink-0"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.345 0 .627.285.627.63 0 .349-.282.63-.627.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"
+              />
+            </svg>
+            <span class="text-left text-sm font-bold leading-snug sm:text-base">
+              公式LINEからお気軽にお問い合わせください<br class="hidden sm:inline" />
+              <span class="text-xs font-normal opacity-90 sm:text-sm">
+                （体験申込みはこちらから！）
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Footer ========== -->
+    <footer class="border-t border-gray-200 bg-white px-4 py-8 sm:px-6">
+      <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
+        <div class="flex items-center">
+          <img
+            src="assets/images/logo_title.png"
+            alt="FC GRANSUMA"
+            class="h-20 w-auto object-contain sm:h-24 md:h-28"
+          />
+        </div>
+        <p class="max-w-lg text-center text-xs leading-relaxed text-gray-500 sm:text-right sm:text-sm">
+          私たちは、サッカーを通じて選手一人ひとりの可能性を最大限に引き出し、未来を切り拓く人材の育成を目指します。
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
