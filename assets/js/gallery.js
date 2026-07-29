@@ -1,15 +1,15 @@
 const GALLERY_IMAGES = [
-  'assets/images/IMG_4643.jpeg',
-  'assets/images/IMG_4869.jpeg',
-  'assets/images/IMG_5029.jpeg',
-  'assets/images/IMG_5050.jpeg',
-  'assets/images/IMG_5054.jpeg',
-  'assets/images/IMG_5059.jpeg',
-  'assets/images/IMG_5067.jpeg',
-  'assets/images/IMG_5086.jpeg',
-  'assets/images/IMG_5497.jpeg',
-  'assets/images/IMG_5617.jpeg',
-];
+  'assets/images/slider/IMG_4643.jpeg',
+  'assets/images/slider/IMG_4869.jpeg',
+  'assets/images/slider/IMG_5029.jpeg',
+  'assets/images/slider/IMG_5050.jpeg',
+  'assets/images/slider/IMG_5054.jpeg',
+  'assets/images/slider/IMG_5059.jpeg',
+  'assets/images/slider/IMG_5067.jpeg',
+  'assets/images/slider/IMG_5086.jpeg',
+  'assets/images/slider/IMG_5497.jpeg',
+  'assets/images/slider/IMG_5617.jpeg',
+]
 
 function initGallerySlider() {
   const slider = document.getElementById('gallery-slider');
